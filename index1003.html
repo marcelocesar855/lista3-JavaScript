@@ -60,6 +60,38 @@
 			document.getElementById("nome4").value = nomes[1];
 			document.getElementById("nome5").value = nomes[0];
 		}
+		function pessoaJuridica() {
+			document.forms["cliente"]["cpf"].disabled = true;
+			document.forms["cliente"]["cnpj"].disabled = false;
+			document.forms["cliente"]["dataNascimento"].disabled = true;
+		}
+		function pessoaFisica() {
+			document.forms["cliente"]["cpf"].disabled = false;
+			document.forms["cliente"]["cnpj"].disabled = true;
+			document.forms["cliente"]["dataNascimento"].disabled = false;
+		}
+		function intercalarPalavras() {
+			var palavra1 = document.forms["intercalar"]["palavra1"].value;
+			var palavra2 = document.forms["intercalar"]["palavra2"].value;
+			var array1 = palavra1.split('');
+			var array2 = palavra2.split('');
+			var totalLetras = 0;
+			var resultado = "";
+			if (array1.length > array2.length) {
+				totalLetras = array1.length;
+			}else{
+				totalLetras = array2.length;
+			}
+			for (var i = 0; i < totalLetras; i++) {
+				if(array1[i]){
+					resultado = resultado + array1[i];
+				}
+				if (array2[i]) {
+					resultado = resultado + array2[i];
+				}
+			}
+			document.forms["intercalar"]["intercalacao"].value = resultado;
+		}
 	</script>
 	<title>Lista de exercicios 3 - JavaScript</title>
 </head>
@@ -102,26 +134,26 @@
 		</div>
 	</form>
 	<br>
-	<div style="padding: 5px; width: 170px;border: 1px solid black;">
+	<div style="padding: 5px; width: 180px;border: 1px solid black;">
 		<form name="cadastro" onsubmit="return validaForm()" method="post">
 			Nome:<br>
-			<input type="text" name="nome" placeholder="Insira seu nome" required="true"> <br>
+			<input type="text" name="nome" placeholder="Insira seu nome" required="true"> <br><br>
 			Senha:<br>
-			<input type="password" name="senha" placeholder="Insira uma senha" required="true"> <br>
+			<input type="password" name="senha" placeholder="Insira uma senha" required="true"> <br><br>
 			Confirmação de senha:<br>
 			<input type="password" name="confirmSenha" placeholder="Confime sua senha" required="true"> <br><br>
 			<button type="submit">Enviar</button>
 		</form>
 	</div>
 	<br>
-	<div style="padding: 5px; width: 160px;border: 1px solid black;">
+	<div style="padding: 5px; width: 180px;border: 1px solid black;">
 		<form>
 			Insira uma palavra:<br>
 			<input type="text" id="palindromo" placeholder="Será que é um palíndromo?" onblur="verificaPalindromo()">
 		</form>
 	</div>
 	<br>
-	<div style="padding: 5px; width: 220px;border: 1px solid black;">
+	<div style="padding: 5px; width: 190px;border: 1px solid black;">
 		<form>
 			Nome 1 <input type="text" id="nome1"><br><br>
 			Nome 2 <input type="text" id="nome2"><br><br>
@@ -130,6 +162,40 @@
 			Nome 5 <input type="text" id="nome5">
 			<br><br>
 			<button type="button" onclick="inverter()">Inverter</button>
+		</form>
+	</div>
+	<br>
+	<div style="padding: 5px; width: 190px;border: 1px solid black;">
+		<form name="cliente" method="post">
+			Nome:<br>
+			<input type="text" name="nomeCliente" placeholder="Nome do cliente"><br><br>
+			Pessoa: <br>
+			<input type="radio" name="tipoPessoa" onclick="pessoaJuridica()">Jurídica<br>
+			<input type="radio" name="tipoPessoa" onclick="pessoaFisica()">Física<br><br>
+			CPF:<br>
+			<input type="text" name="cpf" placeholder="000.000.000-00" disabled="true"><br><br>
+			CNPJ:<br>
+			<input type="text" name="cnpj" placeholder="00.000.000/0000-00" disabled="true"><br><br>
+			Data de nascimento:<br>
+			<input type="date" name="dataNascimento" disabled="true"><br><br>
+			Endereço:<br>
+			<input type="text" name="endereco"><br><br>
+			CEP:<br>
+			<input type="number" name="cep" placeholder="00000-000"><br><br>
+			Telefone<br>
+			<input type="text" name="telefone" placeholder="(00) 0 0000-0000"><br><br>
+			E-mail<br>
+			<input type="email" name="email"><br><br>
+			<button type="submit">Cadastrar</button>
+		</form>
+	</div>
+	<br>
+	<div style="padding: 5px; width: 190px;border: 1px solid black;">
+		<form name="intercalar">
+			<input type="text" name="palavra1"><br><br>
+			<input type="text" name="palavra2"><br><br>
+			<input type="text" name="intercalacao" disabled="true" placeholder="Resultado"><br><br>
+			<button type="button" onclick="intercalarPalavras()">Intercalar</button>
 		</form>
 	</div>
 </body>
