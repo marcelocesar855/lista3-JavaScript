@@ -38,11 +38,13 @@
 		}
 		function verificaPalindromo(){
 			var palavra = document.getElementById("palindromo").value;
-			var revertida = palavra.split('').reverse().join('');
-			if (palavra == revertida) {
-				alert("É um palíndromo!")
-			}else{
-				alert("Não é um palíndromo!")
+			if(palavra != null && palavra != ""){
+				var revertida = palavra.split('').reverse().join('');
+				if (palavra == revertida) {
+					alert("É um palíndromo!")
+				}else{
+					alert("Não é um palíndromo!")
+				}
 			}
 		}
 		function inverter() {
