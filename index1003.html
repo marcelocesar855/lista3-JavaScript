@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<script type="text/javascript">
+		function vermelho() {
+			document.body.style.backgroundColor = "red";
+		}
+		function verde() {
+			document.body.style.backgroundColor = "green";
+		}
+		function azul() {
+			document.body.style.backgroundColor = "blue";
+		}
+		function amarelo() {
+			document.body.style.backgroundColor = "yellow";
+		}
+		function ocultarMostrar() {
+			if (document.getElementById("paragrafo").style.visibility == "hidden") {
+   				 document.getElementById("paragrafo").style.visibility = "visible"
+  			} else {
+    			document.getElementById("paragrafo").style.visibility = "hidden"
+  			}
+		}
+		function validaForm(){
+			var senha = document.forms["cadastro"]["senha"].value;
+			var confirmSenha = document.forms["cadastro"]["confirmSenha"].value;
+			if (senha == confirmSenha) {
+				if (senha.length >= 6 && senha.length <= 10) {
+					return true;
+				}else{
+					alert("Sua senha deve possuir entre 6 e 10 caracteres!");
+					return false;
+				}
+			}else{
+				alert("As senhas informadas não conferem!");
+				return false;
+			}
+		}
+		function verificaPalindromo(){
+			var palavra = document.getElementById("palindromo").value;
+			var revertida = palavra.split('').reverse().join('');
+			if (palavra == revertida) {
+				alert("É um palíndromo!")
+			}else{
+				alert("Não é um palíndromo!")
+			}
+		}
+		function inverter() {
+			var nomes = [];
+			nomes.push(document.getElementById("nome1").value);
+			nomes.push(document.getElementById("nome2").value);
+			nomes.push(document.getElementById("nome3").value);
+			nomes.push(document.getElementById("nome4").value);
+			nomes.push(document.getElementById("nome5").value);
+			document.getElementById("nome1").value = nomes[4];
+			document.getElementById("nome2").value = nomes[3];
+			document.getElementById("nome3").value = nomes[2];
+			document.getElementById("nome4").value = nomes[1];
+			document.getElementById("nome5").value = nomes[0];
+		}
+	</script>
+	<title>Lista de exercicios 3 - JavaScript</title>
+</head>
+<body>
+	<form>
+		<div style="padding: 5px; width: 250px;border: 1px solid black;">
+			<button type="button" onclick="vermelho()">Vermelho</button>
+			<button type="button" onclick="verde()">Verde</button>
+			<button type="button" onclick="azul()">Azul</button>
+			<button type="button" onclick="amarelo()">Amarelo</button>
+		</div>
+		<br>
+		<div style="padding: 5px; width: 200px;border: 1px solid black;">
+			<a onmouseover="vermelho()">Vermelho</a>
+			<a onmouseover="verde()">Verde</a>
+			<a onmouseover="azul()">Azul</a>
+			<a onmouseover="amarelo()">Amarelo</a>
+		</div>
+		<br>
+		<div style="padding: 5px; width: 150px;border: 1px solid black;">
+			<ul>
+				<li>
+					<input type="radio" name="cores" onclick="vermelho()"> Vermelho
+				</li>
+				<li>
+					<input type="radio" name="cores" onclick="verde()"> Verde
+				</li>
+				<li>
+					<input type="radio" name="cores" onclick="azul()"> Azul
+				</li>
+				<li>
+					<input type="radio" name="cores" onclick="amarelo()"> Amarelo
+				</li>
+			</ul>
+		</div>
+		<br>
+		<div style="padding: 5px; width: 300px;border: 1px solid black;">
+			<p id="paragrafo">Para ocultar ou mostrar esse paragrafo clique no botão abaixo.</p>
+			<button type="button" onclick="ocultarMostrar()">Ocultar/Mostrar</button>
+		</div>
+	</form>
+	<br>
+	<div style="padding: 5px; width: 170px;border: 1px solid black;">
+		<form name="cadastro" onsubmit="return validaForm()" method="post">
+			Nome:<br>
+			<input type="text" name="nome" placeholder="Insira seu nome" required="true"> <br>
+			Senha:<br>
+			<input type="password" name="senha" placeholder="Insira uma senha" required="true"> <br>
+			Confirmação de senha:<br>
+			<input type="password" name="confirmSenha" placeholder="Confime sua senha" required="true"> <br><br>
+			<button type="submit">Enviar</button>
+		</form>
+	</div>
+	<br>
+	<div style="padding: 5px; width: 160px;border: 1px solid black;">
+		<form>
+			Insira uma palavra:<br>
+			<input type="text" id="palindromo" placeholder="Será que é um palíndromo?" onblur="verificaPalindromo()">
+		</form>
+	</div>
+	<br>
+	<div style="padding: 5px; width: 220px;border: 1px solid black;">
+		<form>
+			Nome 1 <input type="text" id="nome1"><br><br>
+			Nome 2 <input type="text" id="nome2"><br><br>
+			Nome 3 <input type="text" id="nome3"><br><br>
+			Nome 4 <input type="text" id="nome4"><br><br>
+			Nome 5 <input type="text" id="nome5">
+			<br><br>
+			<button type="button" onclick="inverter()">Inverter</button>
+		</form>
+	</div>
+</body>
+</html>
