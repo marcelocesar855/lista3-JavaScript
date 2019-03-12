@@ -92,6 +92,9 @@
 			}
 			document.forms["intercalar"]["intercalacao"].value = resultado;
 		}
+		function imprimir(x, y, z) {
+			alert(x + ' ' + y + ' ' + z);
+		}
 	</script>
 	<title>Lista de exercicios 3 - JavaScript</title>
 </head>
@@ -196,6 +199,17 @@
 			<input type="text" name="palavra2"><br><br>
 			<input type="text" name="intercalacao" disabled="true" placeholder="Resultado"><br><br>
 			<button type="button" onclick="intercalarPalavras()">Intercalar</button>
+		</form>
+	</div>
+	<br>
+	<div style="padding: 5px; width: 190px;border: 1px solid black;">
+		<form name="impressao">
+			<input type="text" id="texto1"><br><br>
+			<input type="text" id="texto2"><br><br>
+			<input type="text" id="texto3"><br><br>
+			<button type="button" onclick="imprimir(document.forms['impressao']['texto1'].value, 
+				document.forms['impressao']['texto2'].value, 
+				document.forms['impressao']['texto3'].value)">Imprimir</button>
 		</form>
 	</div>
 </body>
